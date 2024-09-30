@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="tailstyles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/base.min.css" rel="stylesheet">
+</head>
+<style>
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;            
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.5;
+        }
+    } 
+    .animate-pulse{
+        animation: pulse 6s ease-in-out infinite;
+    }
+    
+    @keyframes gradient-move{
+        0%{
+            background-position: 0% 50%;
+        }
+        100%{
+            background-position: 100% 50%;
+        }
+    }
+     .animate-gradient{
+        background-size: 200% 200%;
+        animation: gradient-move 1s linear infinite;
+    } 
+    @keyframes rotate{
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+     }
+     @keyframes glow{
+        0%, 100% {
+            box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6;
+        }
+        50% {
+            box-shadow: 0 0 20px #9333ea, 0 0 30px #9333ea, 0 0 40px  #9333ea;
+        }
+     }
+     .animate-glow-rotate {
+        background-size: 200% 200%;
+        animation: rotate 6s linear infinite, glow 2s ease-in-out infinite alternate, gradient-move 1s linear infinite;
+     }
+
+     .flip-card {
+      perspective: 1000px;
+    }
+  
+    .flip-card-inner {
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+  
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+  
+    .flip-card-front, .flip-card-back {
+      backface-visibility: hidden;
+    }
+  
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+</style>
+<body class="flex items-center justify-center min-h-screen bg-gray-900">
+
+    <div class="flip-card w-64 h-40">
+        <div class="flip-card-inner w-full h-full relative">
+          <div class="flip-card-front w-full h-full absolute flex justify-center items-center rounded-lg shadow-lg bg-blue-500 backface-visibility">
+            <h1 class="text-xl text-white font-bold">Front Side</h1>
+          </div>
+          <div class="flip-card-back w-full h-full absolute flex justify-center items-center rounded-lg shadow-lg bg-purple-500">
+            <h1 class="text-xl text-white font-bold">Back Side</h1>
+          </div>
+        </div>
+      </div>
+    <button class="bg-gradient-to-r from-red-900 via-purple-500 to-white-500 text-white m-3 px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 hover:bg-gradient-to-l hover:via-purple-700 hover:to-pink-700 animate-pulse">
+        Pulsating Button
+    </button>
+    <button class="bg-gradient-to-r from-red-900 via-purple-500 to-green-500 text-white m-3 px-6 py-3 rounded-lg shadow-lg transform animate-gradient">
+        Cool Pulsating Button
+    </button>
+    <button class="bg-gradient-to-r from-red-900 via-purple-500 to-green-500 text-white m-3 px-6 py-3 rounded-lg shadow-lg transform animate-glow-rotate">
+        Cool Pulsating Button
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/lib/index.min.js"></script>
+</body>
+</html>
